@@ -5,6 +5,7 @@ namespace ValueTuplesExample
 {
 	class Program
 	{
+		// Lists + Dictionaries >>> Tuples 
 		public static string Trains(string flips, string pos, int limit, bool print = false, char stoppoint = '/') {
 			Dictionary<char, List<char>> points = new Dictionary<char, List<char>>() { {'A',new List<char>(){'D','E','F','1'}},{'B',new List<char>(){'C','G','H','1'}},{'C',new List<char>(){'B','I','J','1'}},{'D',new List<char>(){'A','K','L','1'}},{'E',new List<char>(){'A','M','N','1'}},{'F',new List<char>(){'A','N','O','1'}},
 				{'G',new List<char>(){'B','O','P','1'}},{'H',new List<char>(){'B','P','Q','1'}},{'I',new List<char>(){'C','Q','R','1'}},{'J',new List<char>(){'C','R','S','1'}},{'K',new List<char>(){'D','S','T','1'}},
@@ -20,7 +21,10 @@ namespace ValueTuplesExample
 				if (print) Console.WriteLine(here);
 				int entry = points[next].IndexOf(here);
 				here = next;
-				if (stoppoint != '/' && here == stoppoint) break;
+				if (stoppoint != '/' && here == stoppoint) { 
+					if (print) Console.WriteLine(here);
+					break; 
+				}
 				int state = points[here][3] - 48;
 				if (state > 3)
 				{
@@ -45,7 +49,8 @@ namespace ValueTuplesExample
 			Console.WriteLine(result);
 
 			// Q2
-
+			Trains("ABCDEFGHIJKLMNOPQRSTUVWX", "PV", 10000, true, 'P');
+			Trains("ABCDEFGHIJK", "PV", 100000);
 		}
 
 	}
